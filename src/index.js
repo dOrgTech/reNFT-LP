@@ -1,17 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Header from './components/Section1/Header';
+import Heading from './components/Section1/Heading';
+import About from './components/Section1/About';
+import Partners from './components/Section2/Partners';
+import Roadmap from './components/Section2/Roadmap';
+import Tokenomics from './components/Section2/Tokenomics';
+import Team from './components/Section3/Team';
+import News from './components/Section3/News';
+import Footer from './components/Section3/Footer';
+import { Particles1, Particles2, Particles3 }  from './components/Particles';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    
+    <div className='section-gradient'>
+        <Header/>
+        <Heading/>
+        <About/>
+        <Particles1/>
+    </div>
+
+    <div className='relative section-gradient'>
+        <Partners/>
+        <Roadmap/>
+        <Tokenomics/>
+        <Particles2/>
+    </div>
+
+    <div className='relative section-gradient'>
+        <Team/>
+        <News/>
+        <Footer/>
+        <Particles3/>
+    </div>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,13 +1,234 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  /* Import Fonts */
+  @font-face{
+    font-family:'PressStart';
+    src:url(./assets/fonts/pressstart.ttf) format("truetype");
+    font-weight:400;
+    font-style:normal
+  }
+  
+  @font-face{
+    font-family:'VT323';
+    src:url(./assets/fonts/VT323.ttf) format("truetype");
+    font-weight:400;
+    font-style:normal
+  }
+
+
+  /* Global Styles */
+  html {
+    @apply overflow-x-hidden text-white;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  img{
+    @apply max-w-full select-none;
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+  }
+
+  li{
+    @apply ml-4;
+    text-indent: -1em;
+  }
+
+
+  /* Sections Gradient */
+  .section-gradient{
+    background: linear-gradient(0deg, #6657A0 0%, #C8329E 50%, #F44074 100%);
+  }
+  
+
+  /* Navigation Hover Effects */
+  nav > a:hover{
+    transition: all .4s;
+    animation: nav .25s cubic-bezier(.25,.46,.45,.94) both infinite;
+  }
+ 
+  @keyframes nav {
+    0% {
+      box-shadow: 3px 0 0 #f0f, -2px 0 0 #0ff
+    }
+    33% {
+      box-shadow: 4px 0 0 #f0f, -4px 0 0 #0ff
+    }
+    66% {
+      box-shadow: -3px 0 0 #f0f, 3px 0 0 #0ff
+    }
+    to {
+      box-shadow: 5px 0 0 #f0f, -5px 0 0 #0ff
+    }
+  }
+
+
+  /* Box Hover Effects */
+  .hover-remove-shadow:hover {
+    box-shadow: 0 0 0 0 #000;
+    margin: 4px -4px -4px 4px;
+  }
+  
+  .box-transition-100 {
+    transition: all 0.7s ease 0.1s, margin 0.4s ease 0s, box-shadow 0.4s ease 0s !important;
+  }
+  
+  .box-transition-150 {
+    transition: all 0.7s ease 0.15s, margin 0.4s ease 0s, box-shadow 0.4s ease 0s !important;
+  }
+  
+  .box-transition-200 {
+    transition: all 0.7s ease 0.2s, margin 0.4s ease 0s, box-shadow 0.4s ease 0s !important;
+  }
+
+
+  /* Launch Button Styles */
+  .launch-button-outer{
+    width: 248px;
+    height: 48px;
+    background-color: black;
+    margin-top: 1px;
+    margin-left: 9px;
+    transform: translate(-50%, 50%);
+  }
+  .launch-button-inner { 
+    display: inline-block; 
+    padding: 12px 42px;
+    text-decoration: none;
+    transition: all .2s;
+    background-color: #FFB300;
+    transform: translate(-50%, 50%);
+  }
+  .launch-button-inner::before {
+    position: absolute;
+    content: '';
+    transition: all .2s;
+    bottom: -8px;
+    height: 8px;
+    width: 100%;
+    left: 4.5px;
+    transform: skewX(45deg);
+    background-color: #FB9608;
+  }
+  .launch-button-inner::after {
+    position: absolute;
+    content: '';
+    transition: all .2s;
+    right: -8px;
+    height: 102%;
+    width: 8px;
+    bottom: -4.5px;
+    transform: skewY(45deg);
+    background-color: #FB9608;
+  }
+  .launch-button-inner:active {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  .launch-button-inner:active::before {
+    bottom: -2.5px;
+    height: 2.5px;
+    left: 1.5px;
+    }
+    
+  .launch-button-inner:active::after {
+    right: -2.5px;
+    width: 2.5px;
+    bottom: -1.5px;
+  }
+
+
+  /* Roadmap Grid Layout */
+  .roadmap-wrapper {                         
+    grid-template-columns: 1fr 5px 1fr;
+    grid-template-rows: repeat(14, 1fr);                                
+  }
+  .roadmap-q2{
+    grid-row: 2 / 8;
+    grid-column: 1 / 2;
+  }
+  .roadmap-q3{
+    grid-row: 4 / 12;
+    grid-column: 3 / 4;
+  }
+  .roadmap-q4{
+    grid-row: 9 / 14;
+    grid-column: 1 / 2;
+  }
+  .roadmap-line{
+    grid-row: 1 / 15;
+    grid-column: 2 / 3;
+  }
+
+  @media only screen and (max-width: 1023px) {
+    .roadmap-wrapper {                       
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-row-gap: 60px;                          
+    }
+    .roadmap-q2{
+      grid-row: auto;
+      grid-column: auto;
+      order: 1;
+    }
+    .roadmap-q3{
+      grid-row: auto;
+      grid-column: auto;
+      order: 2;
+    }
+    .roadmap-q4{
+      grid-row: auto;
+      grid-column: auto;
+      order: 3;
+    }
+    .roadmap-line{
+      grid-row: auto;
+      grid-column: auto;
+    }
+  }
+
+
+  /* Grid Gap Classes */
+  .grid-gap-8{
+    grid-gap: 2rem;
+  }
+  .grid-gap-10{
+    grid-gap: 2.5rem;
+  }
+  .grid-gap-y-12 {
+    grid-row-gap: 3rem;
+  }
+  .grid-gap-x-6{
+    grid-column-gap: 1.5rem;
+  }
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+@layer components {
+  .nav-link {
+    @apply px-2 xl:px-3 pb-1 inline-flex items-end hover:bg-black;
+  }
+
+  .nav-link-mobile {
+    @apply py-4 mb-4 w-full text-center hover:bg-black;
+  }
+
+  .social-link {
+    @apply inline-flex items-end transition duration-300 ease-in-out transform hover:scale-105;
+  }
+
+  .particle{
+    @apply absolute mt-96 lg:mt-0;
+  }
 }
