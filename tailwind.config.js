@@ -1,5 +1,10 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  purge: {
+    content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    options: {
+      safelist: ['box-transition-100','box-transition-200']
+    }
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
